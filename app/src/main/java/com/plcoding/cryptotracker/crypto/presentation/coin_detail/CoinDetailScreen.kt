@@ -63,7 +63,8 @@ fun CoinDetailScreen(
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
                 .background(MaterialTheme.colorScheme.background)
-                .padding(16.dp),
+                .padding(horizontal = 16.dp)
+                .padding(top = 30.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(
