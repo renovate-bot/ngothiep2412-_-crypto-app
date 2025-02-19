@@ -13,8 +13,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,7 +29,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -42,6 +44,7 @@ import com.plcoding.cryptotracker.ui.theme.greenBackground
 @Composable
 fun CoinDetailScreen(
     state: CoinListState,
+    onBackClick: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     val contentColor = if (isSystemInDarkTheme()) {
@@ -67,6 +70,16 @@ fun CoinDetailScreen(
                 .padding(top = 30.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            IconButton(
+                onClick = onBackClick,
+                modifier = Modifier.align(Alignment.Start)
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Default.ArrowBack,
+                    contentDescription = null,
+                    tint = Color.Green
+                )
+            }
             Icon(
                 imageVector = ImageVector.vectorResource(
                     id = coin.iconRes

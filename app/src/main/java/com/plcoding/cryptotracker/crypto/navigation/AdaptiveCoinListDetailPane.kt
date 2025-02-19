@@ -30,7 +30,7 @@ fun AdaptiveCoinListDetailPane(
 
     val context = LocalContext.current
 
-    ObserveAsEvents(events = viewModel.event) {event ->
+    ObserveAsEvents(events = viewModel.event) { event ->
         when (event) {
             is CoinListEvent.Error -> {
                 Toast.makeText(
@@ -49,7 +49,7 @@ fun AdaptiveCoinListDetailPane(
             AnimatedPane {
                 CoinListScreen(
                     state = state,
-                    onAction =  {action ->
+                    onAction = { action ->
                         viewModel.onAction(action)
 
                         when (action) {
@@ -65,7 +65,10 @@ fun AdaptiveCoinListDetailPane(
         },
         detailPane = {
             AnimatedPane {
-                CoinDetailScreen(state = state)
+                CoinDetailScreen(
+                    state = state,
+                    onBackClick = { navigator.navigateBack() }
+                )
             }
         },
         modifier = modifier
